@@ -11,17 +11,32 @@ Console.WriteLine("--------- Welcome to Nova Poshta! ---------");
 Console.WriteLine("\tMail Services\n" +
     "1. Add new service\n" +
     "2. Save service\n" +
-    "3. Load service\n" +
+    "3. Edit sertvice\n" +
     "4. Show all service\n" +
     "5. Find service\n" +
     "6. Delete service\n");
 Console.WriteLine("-------------------------------------------");
 
+Console.Write("your choice: ");
+int choice = int.Parse(Console.ReadLine());
+
+switch (choice)
+{
+    case 1:
+        var item = new Package();
+        item.Number = int.Parse(Console.ReadLine());
+        item.Date = Console.ReadLine();
+        item.Phone = Console.ReadLine();
+        item.CityFrom = Console.ReadLine();
+        item.CityTo = Console.ReadLine();
+        break;
+}
+
 public class Package
 {
-    public string Receipt { get; set; }
-    public string Receiving { get; set; }
-    public int Payment { get; set; }
-    public string Registration { get; set; }
-
+    public int Number { get; set; }
+    public string Date { get; set; }
+    public string Phone { get; set; }
+    public string CityFrom { get; set; }
+    public string CityTo { get; set; }
 }
