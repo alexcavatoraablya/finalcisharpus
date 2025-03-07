@@ -20,15 +20,22 @@ Console.WriteLine("-------------------------------------------");
 Console.Write("your choice: ");
 int choice = int.Parse(Console.ReadLine());
 
+Package item = null;
+
 switch (choice)
 {
     case 1:
-        var item = new Package();
+        item = new Package();
         item.Number = int.Parse(Console.ReadLine());
         item.Date = Console.ReadLine();
         item.Phone = Console.ReadLine();
         item.CityFrom = Console.ReadLine();
         item.CityTo = Console.ReadLine();
+        break;
+
+    case 4:
+        Console.WriteLine($"Number: { item.Number }");
+        Console.WriteLine($"CityTo: { item.CityTo }");
         break;
 }
 
