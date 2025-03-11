@@ -7,6 +7,9 @@
 //	Виконані послуги зберігати у іншому файлі
 
 
+using System.Diagnostics;
+using System.Xml.Linq;
+
 Console.WriteLine("--------- Welcome to Nova Poshta! ---------");
 Console.WriteLine("\tMail Services\n" +
     "1. Add new service\n" +
@@ -25,19 +28,15 @@ Package item = null;
 switch (choice)
 {
     case 1:
-        item = new Package();
-        item.Number = int.Parse(Console.ReadLine());
-        item.Date = Console.ReadLine();
-        item.Phone = Console.ReadLine();
-        item.CityFrom = Console.ReadLine();
-        item.CityTo = Console.ReadLine();
+        item.ReadFromConsole();
         break;
 
     case 4:
-        Console.WriteLine($"Number: { item.Number }");
-        Console.WriteLine($"CityTo: { item.CityTo }");
+        item.Show();
         break;
 }
+
+Console.ReadKey();
 
 public class Package
 {
@@ -46,4 +45,24 @@ public class Package
     public string Phone { get; set; }
     public string CityFrom { get; set; }
     public string CityTo { get; set; }
+
+    public void ReadFromConsole()
+    {
+        Console.Write("Enter number: ");
+        Number = int.Parse(Console.ReadLine());
+        Console.Write("Enter city to: ");
+        CityTo = Console.ReadLine();
+        Console.Write("Enter city from: ");
+        CityFrom = Console.ReadLine();
+        Phone = Console.ReadLine();
+    }
+
+    public void Show()
+    {
+        Console.WriteLine($"Number: {Number}$");
+        Console.WriteLine($"CityTo: {Date}");
+        Console.WriteLine($"Number: {Phone}");
+        Console.WriteLine($"CityFrom: {CityFrom}");
+        Console.WriteLine($"CityTo: {CityTo}");
+    }
 }
