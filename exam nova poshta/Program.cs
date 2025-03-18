@@ -12,8 +12,18 @@ using System.Numerics;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-List<Package> items = new();
-List<Service> services = new();
+List<Package> items = new()
+{
+    new Package() { Number = 056, Date = "03 10", Phone = "0973609912", CityFrom = "Kuiv", CityTo = "Rivne"},
+    new Package() { Number = 057, Date = "03 10", Phone = "0973609912", CityFrom = "Kuiv", CityTo = "Zhitomur"},
+    new Package() { Number = 058, Date = "03 10", Phone = "0973609912", CityFrom = "Kuiv", CityTo = "Harkiv"},
+};
+
+List<Service> services = new()
+{
+    new Service() { Name = "Sending", Duration = 2, Price = 140 },
+    new Service() { Name = "Global Forvarding", Duration = 10, Price = 290 },
+};
 
 while (true)
 {
@@ -40,10 +50,6 @@ while (true)
             items.Add(newItem);
             break;
 
-        case 4:
-            foreach (Package item in items)
-                item.Show();
-            break;
         case 2:
             Service newService = new();
             newService.ReadFromConsole();
@@ -53,6 +59,17 @@ while (true)
         case 3:
             foreach (Package item in items)
                 item.Show();
+            break;
+
+        case 4:
+            foreach (Package item in items)
+                item.Show();
+            break;
+
+        case 5:
+            Console.WriteLine("Enter service to find: ");
+            string name = Console.ReadLine();
+
             break;
     }
 
