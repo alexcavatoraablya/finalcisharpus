@@ -9,8 +9,8 @@
 
 using System.Diagnostics;
 using System.Numerics;
+using System.Text.Json;
 using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 List<Package> items = new()
 {
@@ -33,8 +33,9 @@ while (true)
         "2. Add new service\n" +
         "3. Show all package\n" +
         "4. Show all service\n" +
-        "5. Find service\n" +
-        "6. Delete service\n");
+        "5. Load services\n" +
+        "6. Find service\n" +
+        "7. Delete service\n");
     Console.WriteLine("-------------------------------------------");
 
     Console.Write("your choice: ");
@@ -62,11 +63,16 @@ while (true)
             break;
 
         case 4:
-            foreach (Package item in items)
-                item.Show();
+            foreach (Service service in services)
+                service.Show();
             break;
 
         case 5:
+            var jsonData = File.ReadAllText("database.json");
+            services = JsonSerializer.Deserialize<List<Service>>(jsonData);
+            break;
+
+        case 6:
             Console.WriteLine("Enter service to find: ");
             string name = Console.ReadLine();
 
