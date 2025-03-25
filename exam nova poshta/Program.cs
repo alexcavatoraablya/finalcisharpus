@@ -29,13 +29,15 @@ while (true)
 {
     Console.WriteLine("--------- Welcome to Nova Poshta! ---------");
     Console.WriteLine("\tMail Services\n" +
+        "0. Exit\n" +
         "1. Add new package\n" +
         "2. Add new service\n" +
         "3. Show all package\n" +
         "4. Show all service\n" +
         "5. Load services\n" +
-        "6. Find service\n" +
-        "7. Delete service\n");
+        "6. Save service\n" +
+        "7. Find service\n" +
+        "8. Delete service\n");
     Console.WriteLine("-------------------------------------------");
 
     Console.Write("your choice: ");
@@ -45,6 +47,10 @@ while (true)
 
     switch (choice)
     {
+        case 0:
+            Console.WriteLine("Have a great day!");
+            return 0;
+
         case 1:
             Package newItem = new();
             newItem.ReadFromConsole();
@@ -73,9 +79,30 @@ while (true)
             break;
 
         case 6:
+            var json = JsonSerializer.Serialize(items);
+            File.WriteAllText("database.json", json);
+
+            var json2 = JsonSerializer.Serialize(services);
+            File.WriteAllText("services.json", json2);
+            break;
+
+        case 7:
             Console.WriteLine("Enter service to find: ");
             string name = Console.ReadLine();
+            break;
 
+        case 8:
+            Console.Write("Enter service to delete: ");
+            int name2 = int.Parse(Console.ReadLine());
+
+            var found2 = items.Find(x => x.Number == name2);
+            if (found2 == null)
+            {
+                Console.WriteLine("Product not found!");
+                break;
+            }
+
+            items.Remove(found2);
             break;
     }
 
