@@ -13,65 +13,38 @@ using System.Numerics;
 using System.Text.Json;
 using System.Xml.Linq;
 
+Menu menu = new();
 nova_poshta exam_nova_poshta = new();
 
 while (true)
 {
+    Console.Clear();
     Console.WriteLine("--------- Welcome to Nova Poshta! ---------");
-    Console.WriteLine("\tMail Services\n" +
-        "0. Exit\n" +
-        "1. Add new package\n" +
-        "2. Add new service\n" +
-        "3. Show all package\n" +
-        "4. Show all service\n" +
-        "5. Load services\n" +
-        "6. Save service\n" +
-        "7. Find service\n" +
-        "8. Delete service\n");
-    Console.WriteLine("-------------------------------------------");
 
-    Console.Write("your choice: ");
-    int choice = int.Parse(Console.ReadLine());
-
+    menu.ShowMenu();
+    int choice = menu.AskUserInput();
 
 
     switch (choice)
     {
-        case 0:
-            Console.WriteLine("Have a great day!");
+        case 0: Console.WriteLine("Have a great day!");
             return 0;
 
-        case 1:
-            
-            break;
+        case 1: exam_nova_poshta.AddPackage(); break;
 
-        case 2:
-           
-            break;
+        case 2: exam_nova_poshta.AddService(); break;
 
-        case 3:
+        case 3: exam_nova_poshta.ShowPackage(); break;
 
-            break;
+        case 4: exam_nova_poshta.ShowService(); break;
 
-        case 4:
+        case 5: exam_nova_poshta.LoadService(); break;
 
-            break;
+        case 6: exam_nova_poshta.SaveService(); break;
 
-        case 5:
-           
-            break;
+        case 7: exam_nova_poshta.FindService(); break;
 
-        case 6:
-            
-            break;
-
-        case 7:
-
-            break;
-
-        case 8:
-
-            break;
+        case 8: exam_nova_poshta.DeleteService(); break;
     }
 
     Console.ReadKey();
