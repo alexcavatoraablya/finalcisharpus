@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace exam_nova_poshta;
 internal class Menu
 {
-    public void ShowMenu()
+    public void ShowAdminMenu()
     {
         Console.WriteLine("\tMail Services\n" +
         "0. Exit\n" +
@@ -26,5 +26,22 @@ internal class Menu
     {
         Console.Write("Your choice: ");
         return int.Parse(Console.ReadLine());
+    }
+
+    public void ShowLoginMenu()
+    {
+        Console.WriteLine("\tChoose your role\n" +
+       "0. Exit\n" +
+       "1. User\n" +
+       "2. Admin\n");
+        Console.WriteLine("-------------------------------------------");
+    }
+
+    public void ShowUserMenu()
+    {
+        Console.WriteLine("\tUSER MENU\n" +
+                          "0. Exit\n" +
+                          "1. Add delivery");
+        Console.WriteLine("-------------------------------------------");
     }
 }

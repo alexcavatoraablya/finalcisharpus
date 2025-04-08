@@ -16,37 +16,68 @@ using System.Xml.Linq;
 Menu menu = new();
 nova_poshta exam_nova_poshta = new();
 
-while (true)
+menu.ShowLoginMenu();
+int roleChoice = menu.AskUserInput();
+
+if (roleChoice == 1)
 {
-    Console.Clear();
-    Console.WriteLine("--------- Welcome to Nova Poshta! ---------");
+    Console.Clear(); // очищення консолі
+    Console.WriteLine("------------- Welcome to Nova Poshta for User! -------------");
 
-    menu.ShowMenu();
+    menu.ShowUserMenu();
     int choice = menu.AskUserInput();
-
 
     switch (choice)
     {
-        case 0: Console.WriteLine("Have a great day!");
-            return 0;
+        case 0: return 0;
+        case 1:
+            Console.WriteLine("You can buy something!");
+            break;
+    }
+}
 
-        case 1: exam_nova_poshta.AddPackage(); break;
+if (roleChoice == 2)
+{
 
-        case 2: exam_nova_poshta.AddService(); break;
 
-        case 3: exam_nova_poshta.ShowPackage(); break;
 
-        case 4: exam_nova_poshta.ShowService(); break;
+    while (true)
+    {
+        Console.Clear();
+        Console.WriteLine("--------- Welcome to Nova Poshta! ---------");
 
-        case 5: exam_nova_poshta.LoadService(); break;
+        menu.ShowAdminMenu();
+        int choice = menu.AskUserInput();
 
-        case 6: exam_nova_poshta.SaveService(); break;
 
-        case 7: exam_nova_poshta.FindService(); break;
+        switch (choice)
+        {
+            case 0:
+                Console.WriteLine("Have a great day!");
+                return 0;
 
-        case 8: exam_nova_poshta.DeleteService(); break;
+            case 1: exam_nova_poshta.AddPackage(); break;
+
+            case 2: exam_nova_poshta.AddService(); break;
+
+            case 3: exam_nova_poshta.ShowPackage(); break;
+
+            case 4: exam_nova_poshta.ShowService(); break;
+
+            case 5: exam_nova_poshta.LoadService(); break;
+
+            case 6: exam_nova_poshta.SaveService(); break;
+
+            case 7: exam_nova_poshta.FindService(); break;
+
+            case 8: exam_nova_poshta.DeleteService(); break;
+        }
+
+        Console.ReadKey();
+        Console.ReadKey();
     }
 
-    Console.ReadKey();
-    Console.ReadKey();
 }
+
+Console.WriteLine("Have a nice day!");
+return 0;
