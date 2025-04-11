@@ -31,7 +31,9 @@ if (roleChoice == 1)
     {
         case 0: return 0;
         case 1:
-            Console.WriteLine("You can buy something!");
+            Console.WriteLine("You can send something!");
+            break;
+            exam_nova_poshta.AddPackage();
             break;
     }
 }
